@@ -1,0 +1,5 @@
+<% if !profile_path(current_user) %>
+	<% redirect_to profile_path(current_user) %>
+<% end %>
+$('#modal-name').modal('hide');
+$('.tasks').append('<%= j render "table", task: @task %>');

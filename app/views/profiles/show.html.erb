@@ -25,11 +25,11 @@
 				  	  <thead>
 				  		<tr>
 				  			<th colspan="4">
-				  				<button type="button" class="btn btn-secondary">Nueva Tarea</button>
+				  				<%= link_to 'Nueva Tarea', new_task_path, class: "btn btn-secondary", remote: true %>
 				  			</th>				  			
 				  		</tr>		
 				  	  </thead>				  	  
-				  	  <tbody>
+				  	  <tbody class="tasks">
 				  	  	<% current_user.tasks.each do |task| %>
 				  	  		<tr>
 				  	  		  <th scope="row" style=" width: 40px; color: gray;"><i class="far fa-check-circle"></i></th>
