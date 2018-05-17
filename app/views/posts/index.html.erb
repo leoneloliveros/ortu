@@ -1,0 +1,23 @@
+<div class="container" >
+	<div class="d-flex justify"style="padding-top: 30px;">
+		<% if user_signed_in? %>
+			<%= link_to "Nueva Publicación", new_post_path, class: "btn btn-success" %>
+		<% end %>
+	</div>
+	<div class="card text-center"  style="margin-top: 30px;">	  
+	    <% @posts.each do |post| %>
+		    <div class="card-body">
+			  	<div class="card-columns">
+			  		<div class="card">
+			  	    	<img class="card-img-top" src="<%= post.pictures.first.image_url %>" alt="Card image cap">
+			  	    	<div class="card-body">
+			  	        	<h5 class="card-title"><%= post.title %></h5>
+			  	        	<p class="card-text"><%= post.description %></p>
+			  	        	<p class="card-text"><small class="text-muted">Creado por: <%= post.user.name %></small></p>
+			  	    	</div>
+			  	    </div>	            	  
+			  	</div>	    
+		    </div>
+	    <% end %>
+	</div>
+</div>

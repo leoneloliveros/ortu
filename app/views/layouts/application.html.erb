@@ -7,9 +7,78 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="icon" href="/icon.png">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   </head>
-
   <body>
-    <%= yield %>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light">
+      <div class="col-2 brand-col">
+        <a class="navbar-brand d-flex justify-content-center" href="/">
+          <img src="/brand1.png" width="100" height="50">
+        </a>        
+      </div>       
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/"><i class="fas fa-home"></i> Principal <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item"><%= link_to posts_path, class: "nav-link" do %>
+                <i class="fas fa-portrait"></i> Publicaciones
+              <% end %>
+              </li>
+            <% if user_signed_in? %>
+              <li class="navbar-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: gray;">
+                  <i class="fas fa-user"></i> Mi Perfil
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <%= link_to "Mi Jardín", profile_path(current_user), class: "dropdown-item" %>
+                    <a class="dropdown-item" href="#">Nueva Tarea</a>
+                    <a class="dropdown-item" href="#">Editar Perfil</a>
+                    <div class="dropdown-divider"></div>
+                    <%= link_to destroy_user_session_path, :method=>'delete',class: "dropdown-item" do %>
+                      <i class="fas fa-times"></i> Salir                  
+                    <% end %>
+                  </div>
+                </li>
+            <% else %>
+              <li class="nav-item"><%= link_to new_user_session_path, class: "nav-link" do %>
+                <i class="fas fa-users"></i> Ingresar
+              <% end %>
+              </li>
+              <li class="nav-item"><%= link_to new_user_registration_path, class: "nav-link" do %>
+                <i class="fas fa-pencil-alt"></i> Registrarse
+              <% end %>
+              </li>
+             
+            <% end %>           
+          </ul>          
+          <form class="form-inline my-2 my-lg-0" style="margin-right: 40px;">
+            <input class="form-control mr-sm-2" type="search" placeholder="Buscar en publicaciones  " aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+          </form>
+          <span class="navbar-item dropdown" style="margin-right: 40px;">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: gray;">
+                <i class="fas fa-book"></i> Acerca de
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Uso de plataforma</a>
+                <a class="dropdown-item" href="#">Términos y condiciones</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Proyecto Ortu</a>
+              </div>
+          </span>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
   </body>
 </html>

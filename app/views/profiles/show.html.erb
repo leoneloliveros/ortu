@@ -1,0 +1,51 @@
+<div class="row" height= "100" style="margin-top: 60px; ">
+	<div class="col-2" style="background-color:#5C361F; height: 91vh">
+		<div class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="margin-top: 30px;">
+		  <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true" style="color: white;"><i class="fas fa-tasks"></i> Tareas</a>
+		  <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" style="color: white;"><i class="fas fa-calendar-alt"></i> Calendario</a>
+		  <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false" style="color: white;"><i class="fas fa-seedling"></i> Periodos de Germinación</a>
+		  <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false" style="color: white;"><i class="fas fa-object-ungroup"></i> Diseños</a>
+		
+		<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false" style="color: white;"><i class="fas fa-leaf"></i> Plantas</a>
+		<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false" style="color: white;"><i class="fas fa-tint"></i> Agua</a>
+		<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false" style="color: white;"><i class="fas fa-sticky-note"></i> Notas</a>
+		</div>		
+	</div>
+	<div class="col-10" >
+		<div class="row align-items-center justify-content-start" style="background-color: white; padding: 10px 50px 10px;">
+			<img src="/profile.png" alt="" width="100px" height="100px">
+			<span style="margin-left: 250px;">Bienvenido <%=current_user.name %></span>
+		</div>
+		<div class="row" style="background-color:  #e8e9ea;  height: 72vh">
+			<div class="container" style="background-color:  white; margin: 50px; margin-top: 20px; margin-bottom: 20px;  overflow: scroll;">
+				<div class="tab-content" id="v-pills-tabContent">
+				  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+				  	
+				  	<table class="table table-hover table-striped">	
+				  	  <thead>
+				  		<tr>
+				  			<th colspan="4">
+				  				<button type="button" class="btn btn-secondary">Nueva Tarea</button>
+				  			</th>				  			
+				  		</tr>		
+				  	  </thead>				  	  
+				  	  <tbody>
+				  	  	<% current_user.tasks.each do |task| %>
+				  	  		<tr>
+				  	  		  <th scope="row" style=" width: 40px; color: gray;"><i class="far fa-check-circle"></i></th>
+				  	  		  <td><%= task.title %></td>
+				  	  		  <td><%= task.description %></td>
+				  	  		</tr>	
+				  	  	<% end %>				  	    
+				  	  </tbody>
+				  	</table>
+				  </div>
+				  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+				  <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+				  <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+				</div>
+				
+			</div>			
+		</div>
+	</div>
+</div>

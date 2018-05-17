@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-6">
+			<h1 class="text-center">Nueva Publicación</h1>
+			<%= form_for @post do |f| %>
+				<div class="form-group">
+					<%= f.label :title, "Título" %>
+					<%= f.text_field :title, class: "form-control" %>
+				</div>
+				<div class="form-group">
+					<%= f.label :description, "Descripción" %>
+					<%= f.text_area :description, class: "form-control" %>
+				</div>
+				<div class="form-group">					
+					<%= f.label :image_url, "Inserta url de la imagen" %>
+					<%= f.text_field :pictures, class: "form-control" %>						
+				</div>		
+		  		<%= f.submit "Create", class: "btn btn-success" %>
+			<% end %>
+		</div>
+	</div>
+</div>

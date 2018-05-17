@@ -12,3 +12,24 @@
  *
  */
  @import "bootstrap";
+ .navbar {
+ 	background-color: #e8e9ea;
+ 	padding: 0px;
+	box-shadow: 0px 5px 4px rgba(0, 0, 0, .5);
+ }
+.brand-col {
+	background-color: #5C361F;
+}
+.container-fluid {
+	margin-top: 63px;
+}
+.principal-container {	
+	height: 500px;
+	width: 100%;	
+	background-repeat: no-repeat; 
+	background-size: 100% 100%;
+}
+.bienvenida {
+	font-family: 'Shadows Into Light Two', cursive;
+	font-size: 100px;
+}
