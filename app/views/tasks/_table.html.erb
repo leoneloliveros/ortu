@@ -1,5 +1,17 @@
-<tr>
-  <th scope="row" style=" width: 40px; color: gray;"><i class="far fa-check-circle"></i></th>
-  <td><%= task.title %></td>
-  <td><%= task.description %></td>
+<tr id="task-<%=task.id%>">
+	<th><%= link_to complete_task_path(task), method: :patch, remote: true do %>
+  								<i class="far fa-check-circle"></i>
+									<% end %></th>
+  	<td style=" <%= task.completed ? "text-decoration: line-through;" : "" %>"><%= task.title %></td>
+  	<td style=" <%= task.completed ? "text-decoration: line-through;" : "" %>"><%= task.description %></td>
+  	<td style="width: 180px">
+  		<span class="badge badge-<%= task.completed ? "success" : "primary" %>"><%= task.completed ? "Completado" : "En Proceso" %></span>  		
+  		<i class="far fa-comments"></i>
+  		<%= link_to edit_task_path(task), remote: true do %>
+  			<i class="far fa-edit"></i>
+  		<% end %>
+  		<%= link_to task_path(task), method: :delete, data: {confirm: "¿Estás Seguro que desea eliminar esta tarea?"}, remote: true do %>
+  			<i class="far fa-trash-alt"></i>
+  		<% end %>    
+  	</td>
 </tr>
