@@ -6,4 +6,5 @@ class User < ApplicationRecord
 	has_many :posts
 	has_many :tasks 
 	validates :name, presence: true       
+	has_many :comments, as: :commentable
 end
