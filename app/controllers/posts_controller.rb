@@ -6,13 +6,13 @@ class PostsController < ApplicationController
 		@post = Post.find(params[:id])
 	end	
 	def new
-		@post = Post.new
-		
+		@post = Post.new		
 	end
 	def create
-		post = Post.new(post_params)
-		if post.save
-			redirect_to post
+		@post = Post.new(post_params)
+		if @post.save
+			@post.pictures.create(picture_params)
+			redirect_to @post
 		else
 			render :new
 		end
@@ -35,6 +35,10 @@ class PostsController < ApplicationController
 	end
 	private
 	def post_params
-		params.require(:post).permit(:title, :description, :user_id).merge(user: User.first.id)
+		params.require(:post).permit(:title, :description, :image_url).merge(user: current_user)
 	end
+	def picture_params
+		params.require(:picture).permit(:image_url).merge(pictureable_id: :post_id, pictureable_type: "post")
+	end
+
 end
